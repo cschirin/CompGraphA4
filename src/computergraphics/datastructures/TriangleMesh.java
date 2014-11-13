@@ -137,6 +137,30 @@ public class TriangleMesh implements ITriangleMesh {
 				+ ")";
 	}
 
+    @Override
+    public void setTextureFilename(String filename) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public String getTextureFilename() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void addTextureCoordinate(Vector3 texCoord) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public Vector3 getTextureCoordinate(int index) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 
 
 }

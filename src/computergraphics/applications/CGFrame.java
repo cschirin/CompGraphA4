@@ -27,9 +27,6 @@ public class CGFrame extends AbstractCGFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 4257130065274995543L;
-	/* "[...] beispielsweise weiß entspricht einem y‐Wert von 0.1."*/
-	private static final double MAX_HEIGHT = 0.3;
-	private static final int DEFAULT_RESOLUTION = 800; //8x8
 
 	/**
 	 * Constructor.
