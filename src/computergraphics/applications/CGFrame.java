@@ -7,10 +7,13 @@ package computergraphics.applications;
 
 import java.io.IOException;
 
+import computergraphics.datastructures.ObjIO;
+import computergraphics.datastructures.TriangleMesh;
 import computergraphics.framework.AbstractCGFrame;
 import computergraphics.math.Vector3;
 import computergraphics.scenegraph.ColorNode;
 import computergraphics.scenegraph.TranslationNode;
+import computergraphics.scenegraph.TriangleMeshNode;
 
 /**
  * Application for the first exercise.
@@ -32,15 +35,19 @@ public class CGFrame extends AbstractCGFrame {
 	public CGFrame(int timerInverval) throws IOException {
 		super(timerInverval);
 		
-		//Bild zentriert darstellen
-		TranslationNode translationNode = 
-		        new TranslationNode(new Vector3(-0.5,0,-0.5));
+		TriangleMesh cube = new TriangleMesh(); 
+		ObjIO reader = new ObjIO(); 
+		//bug: funktioniert nicht mit meinen in Wings3d erstellten meshes
+		reader.einlesen("./meshes/BlenderCube.obj", cube);
+		
+		TriangleMeshNode tmNode = new TriangleMeshNode(cube);
+		
 		
 		// Colornode erstellen für farbliche Darstellung
 		ColorNode colorNode = new ColorNode(new Vector3(0, 0.75, 0));
 		
-		getRoot().addChild(translationNode);
-		translationNode.addChild(colorNode);
+		getRoot().addChild(colorNode);
+		colorNode.addChild(tmNode);
 	}
 	
     /*
