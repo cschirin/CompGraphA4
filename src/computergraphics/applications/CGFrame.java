@@ -37,7 +37,7 @@ public class CGFrame extends AbstractCGFrame {
 		TriangleMesh cube = new TriangleMesh(); 
 		ObjIO reader = new ObjIO(); 
 		//bug: funktioniert nicht mit meinen in Wings3d erstellten meshes
-		reader.einlesen("./meshes/BlenderCube.obj", cube);
+		reader.einlesen("./meshes/cube.obj", cube);
 		
 		TriangleMeshNode tmNode = new TriangleMeshNode(cube);
 		
