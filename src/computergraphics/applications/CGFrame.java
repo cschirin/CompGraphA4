@@ -7,13 +7,10 @@ package computergraphics.applications;
 
 import java.io.IOException;
 
-import computergraphics.datastructures.ITriangleMesh;
 import computergraphics.framework.AbstractCGFrame;
 import computergraphics.math.Vector3;
 import computergraphics.scenegraph.ColorNode;
 import computergraphics.scenegraph.TranslationNode;
-import computergraphics.scenegraph.TriangleMeshNode;
-import computergraphics.util.Heightfield;
 
 /**
  * Application for the first exercise.
