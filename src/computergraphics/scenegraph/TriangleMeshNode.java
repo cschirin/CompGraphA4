@@ -31,6 +31,8 @@ public class TriangleMeshNode extends Node {
     private int displayList; // index der display liste
     private boolean displayListMissing = true;
     
+    private Texture texture;
+    
     
     /**
      * Default Constructor. 
@@ -141,11 +143,7 @@ public class TriangleMeshNode extends Node {
         //Textur einlesen
         File textureFile = new File(triangleMesh.getTextureFilename());
         //erstmal keine mipmaps benutzen.
-        Texture texture = TextureIO.newTexture(textureFile, false); 
-        
-        //Textur binden
-        gl.glBindTexture(texture.getTarget(), texture.getTextureObject());
-        //obere zeile lässt sich auch als texture.bind(gl); schreiben
+        texture = TextureIO.newTexture(textureFile, false); 
     }
 
     @Override
@@ -154,6 +152,9 @@ public class TriangleMeshNode extends Node {
         // "Insbesondere soll die Displayliste nur einmal erzeugt werden..."
             initDisplayList(gl);
         }
+        //Textur binden
+        gl.glBindTexture(texture.getTarget(), texture.getTextureObject());
+        //obere zeile lässt sich auch als texture.bind(gl); schreiben
         //"... und zur laufzeit bei jedem Zeichnen lediglich aufgerufen werden"
         gl.glCallList(displayList); 
 
