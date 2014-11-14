@@ -4,6 +4,7 @@
 * Andreas Mauritz (Andreas.Mauritz@haw-hamburg.de)
 * Christian Schirin (Christian.Schirin@haw-hamburg.de)
 * Aufgabe: Aufgabenblatt 2, Aufgabe 1
+* und Aufgabenblatt 4 (Praxis: Texture Mapping), Aufgabe 1
 * Verwendete Quellen: 
 * Phillip Jenke: Folien zu Vorlesung 2 - Polygonale Netze (S.6)
 * 
@@ -30,11 +31,18 @@ public class TriangleMesh implements ITriangleMesh {
 	
 	//und eine Facettenliste F. 
 	private List<Triangle> facetList; //Unsere Facetten sind alle dreieckig
+	
+	//für texturen brauchen wir auch noch eine liste von Texturkoordinaten.
+	private List<Vector3> textureCoordinateList;
+	
+	//und den dateinamen der textur. Die textur ist eine bilddatei (.png,...)
+	private String textureFilename;
 
 	/** Initializer. */ 
 	{ 
 		vertexList = new ArrayList<>();
 		facetList = new ArrayList<>();
+		textureCoordinateList = new ArrayList<>();
 	}
 
 	@Override
@@ -139,26 +147,31 @@ public class TriangleMesh implements ITriangleMesh {
 
     @Override
     public void setTextureFilename(String filename) {
-        // TODO Auto-generated method stub
-        
+        textureFilename = filename;
     }
 
     @Override
     public String getTextureFilename() {
-        // TODO Auto-generated method stub
-        return null;
+        return textureFilename;
     }
 
+    /**
+     * {@inheritDoc}
+     * Fügt eine textur-koordinate zu einem dreiecksnetz hinzu. 
+     * Die koordinate wird als dreidimensionaler vektor übergeben,
+     * jedoch werden nur die stellen x und y von diesem vektor verwendet.
+     * x ist der u-wert und y der v-wert der textur-koordinate.
+     * @param texCoord 
+     *          Das zu übergebende (u,v)-Paar.
+     */
     @Override
     public void addTextureCoordinate(Vector3 texCoord) {
-        // TODO Auto-generated method stub
-        
+        textureCoordinateList.add(texCoord);
     }
 
     @Override
     public Vector3 getTextureCoordinate(int index) {
-        // TODO Auto-generated method stub
-        return null;
+        return textureCoordinateList.get(index);
     }
 
 
