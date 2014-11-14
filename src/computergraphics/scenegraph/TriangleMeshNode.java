@@ -1,3 +1,12 @@
+/**
+* Praktikum WPCG, Wintersemester 2014/2015
+* Gruppe: 
+* Andreas Mauritz (Andreas.Mauritz@haw-hamburg.de)
+* Christian Schirin (Christian.Schirin@haw-hamburg.de)
+* Aufgabenblatt 4 (Praxis: Texture Mapping), Aufgabe 2
+* Verwendete Quellen: -
+* 
+*/
 package computergraphics.scenegraph;
 
 import javax.media.opengl.GL;
@@ -56,20 +65,37 @@ public class TriangleMeshNode extends Node {
                 //Draw the Vertices based on the positions
                 
                 //Draw vertex A
-                //System.out.println(vertexA.getColor().get(0));
                 gl.glColor3d(vertexA.getColor().get(0), vertexA.getColor().get(1), vertexA.getColor().get(2));
                 gl.glNormal3d(triangle.getNormal().get(0),triangle.getNormal().get(1),
                         triangle.getNormal().get(2));
+                
+                //Get texture coordinate for Vertex A
+                Vector3 texCoordA = triangleMesh
+                        .getTextureCoordinate(triangle.getTextureCoordinate(0));
+                gl.glTexCoord2d(texCoordA.get(0),texCoordA.get(1));
+                
                 gl.glVertex3d(positionA.get(0),positionA.get(1),positionA.get(2));
                 //Draw vertex B 
                 gl.glColor3d(vertexB.getColor().get(0), vertexB.getColor().get(1), vertexB.getColor().get(2));
                 gl.glNormal3d(triangle.getNormal().get(0),triangle.getNormal().get(1),
-                        triangle.getNormal().get(2));                
+                        triangle.getNormal().get(2));
+                
+                //Get texture coordinate for Vertex B
+                Vector3 texCoordB = triangleMesh
+                        .getTextureCoordinate(triangle.getTextureCoordinate(1));
+                gl.glTexCoord2d(texCoordB.get(0),texCoordB.get(1));
+                
                 gl.glVertex3d(positionB.get(0),positionB.get(1),positionB.get(2));
                 //Draw vertex C 
                 gl.glColor3d(vertexC.getColor().get(0), vertexC.getColor().get(1), vertexC.getColor().get(2));
                 gl.glNormal3d(triangle.getNormal().get(0),triangle.getNormal().get(1),
                         triangle.getNormal().get(2));
+                
+                //Get texture coordinate for Vertex C
+                Vector3 texCoordC = triangleMesh
+                        .getTextureCoordinate(triangle.getTextureCoordinate(2));
+                gl.glTexCoord2d(texCoordC.get(0),texCoordC.get(1));
+                
                 gl.glVertex3d(positionC.get(0),positionC.get(1),positionC.get(2));
                 
                 
