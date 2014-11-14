@@ -1,0 +1,5 @@
+#
+#
+newmtl cube_repeated_texture_material
+map_Kd logo_haw_resize.png
+

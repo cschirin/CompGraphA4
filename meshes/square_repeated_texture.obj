@@ -1,0 +1,17 @@
+# Material
+mtllib square_repeated_texture.mtl
+# Vertices
+v -0.5 -0.5 0.0
+v 0.5 -0.5 0.0
+v 0.5 0.5 0.0
+v -0.5 0.5 0.0
+# Texture Coordinates
+# modified. Example: (0,1) -> (0,2)
+vt 0 2
+vt 2 2
+vt 2 0
+vt 0 0
+# Faces (Triangles)
+usemtl square_repeated_texture_material
+f 1/1 2/2 3/3
+f 1/1 3/3 4/4

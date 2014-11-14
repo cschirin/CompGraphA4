@@ -152,6 +152,11 @@ public class TriangleMeshNode extends Node {
         // "Insbesondere soll die Displayliste nur einmal erzeugt werden..."
             initDisplayList(gl);
         }
+        //Dafür sorgen, dass die textur wiederholt wird
+        //meiner meinung nach müsste GL_TEXTURE_WRAP_S lieber GL_TEXTURE_WRAP_U
+        //und GL_TEXTURE_WRAP_T lieber GL_TEXTURE_WRAP_V heißen, wieso andere 
+        gl.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_S, GL.GL_REPEAT);
+        gl.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_T, GL.GL_REPEAT);
         //Textur binden
         gl.glBindTexture(texture.getTarget(), texture.getTextureObject());
         //obere zeile lässt sich auch als texture.bind(gl); schreiben
