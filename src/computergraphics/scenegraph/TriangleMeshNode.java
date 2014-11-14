@@ -143,7 +143,10 @@ public class TriangleMeshNode extends Node {
         //Textur einlesen
         File textureFile = new File(triangleMesh.getTextureFilename());
         //erstmal keine mipmaps benutzen.
-        texture = TextureIO.newTexture(textureFile, false); 
+        texture = TextureIO.newTexture(textureFile, false);
+        
+        System.out.printf("Die textur %s wurde erfolgreich geladen.\n",
+                textureFile);
     }
 
     @Override
@@ -154,7 +157,7 @@ public class TriangleMeshNode extends Node {
         }
         //Dafür sorgen, dass die textur wiederholt wird
         //meiner meinung nach müsste GL_TEXTURE_WRAP_S lieber GL_TEXTURE_WRAP_U
-        //und GL_TEXTURE_WRAP_T lieber GL_TEXTURE_WRAP_V heißen, wieso andere 
+        //und GL_TEXTURE_WRAP_T lieber GL_TEXTURE_WRAP_V heißen, wieso andere namen?
         gl.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_S, GL.GL_REPEAT);
         gl.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_T, GL.GL_REPEAT);
         //Textur binden
