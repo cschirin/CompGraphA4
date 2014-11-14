@@ -25,9 +25,15 @@ public class ColorNode extends Node {
 	public ColorNode(Vector3 color) {
 		this.color.copy(color);
 
+		/*
 		// Use a Phong shader
 		shader = new CgGlslShader("shader/vertex_shader_phong_shading.glsl",
 				"shader/fragment_shader_phong_shading.glsl");
+		*/
+		
+		// Use a Shader that supports Textures
+		shader = new CgGlslShader("shader/vertex_shader_texture.glsl", 
+		        "shader/fragment_shader_texture.glsl");
 	}
 
 	@Override
