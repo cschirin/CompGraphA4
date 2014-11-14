@@ -31,7 +31,7 @@ public class CGFrame extends AbstractCGFrame {
 	 * Constructor.
 	 * @throws IOException 
 	 */
-	public CGFrame(int timerInverval) throws IOException {
+	public CGFrame(int timerInverval) {
 		super(timerInverval);
 		
 		TriangleMesh cube = new TriangleMesh(); 
@@ -63,7 +63,7 @@ public class CGFrame extends AbstractCGFrame {
 	 * Program entry point.
 	 * @throws IOException 
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		new CGFrame(1000);
 	}
 }

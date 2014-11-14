@@ -9,8 +9,15 @@
 */
 package computergraphics.scenegraph;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
+import javax.media.opengl.GLException;
+
+import com.jogamp.opengl.util.texture.Texture;
+import com.jogamp.opengl.util.texture.TextureIO;
 
 import computergraphics.datastructures.ITriangleMesh;
 import computergraphics.datastructures.Triangle;
@@ -33,12 +40,25 @@ public class TriangleMeshNode extends Node {
     }
     
     private void initDisplayList(GL2 gl) {
+        
+        try {
+            initTexture(gl);
+        } catch (GLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Konnte Textur "+
+            triangleMesh.getTextureFilename()+" nicht laden!");
+            e.printStackTrace();
+        }
+        
         displayList = gl.glGenLists(1);
         
         gl.glNewList(displayList, GL2.GL_COMPILE);
         
         //The draw code starts here
-            
+             //Texture code starts here    
+        
             //We need to iterate over all the Triangles
             int numberOfTriangles = triangleMesh.getNumberOfTriangles();
             
@@ -106,6 +126,26 @@ public class TriangleMeshNode extends Node {
         gl.glEndList(); //Create the display list.
         
         displayListMissing = false; //We just created the display list
+    }
+
+    /**
+     * Aktiviert Texturen in OpenGL, lädt eine textur aus einem bild, dessen
+     * dateiname im dreiecksnetz angegeben ist, und bindet diese textur.
+     * @throws IOException 
+     * @throws GLException 
+     */
+    private void initTexture(GL2 gl) throws GLException, IOException {
+        //"Opgengl mitteilen, dass wir texturen verwenden wollen" 
+        gl.glEnable(GL.GL_TEXTURE_2D);
+        
+        //Textur einlesen
+        File textureFile = new File(triangleMesh.getTextureFilename());
+        //erstmal keine mipmaps benutzen.
+        Texture texture = TextureIO.newTexture(textureFile, false); 
+        
+        //Textur binden
+        gl.glBindTexture(texture.getTarget(), texture.getTextureObject());
+        //obere zeile lässt sich auch als texture.bind(gl); schreiben
     }
 
     @Override
