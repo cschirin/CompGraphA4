@@ -37,13 +37,13 @@ public class CGFrame extends AbstractCGFrame {
 		TriangleMesh cube = new TriangleMesh(); 
 		ObjIO reader = new ObjIO(); 
 		//bug: funktioniert nicht mit meinen in Wings3d erstellten meshes
-		reader.einlesen("./meshes/cube.obj", cube);
+		reader.einlesen("./meshes/square.obj", cube);
 		
 		TriangleMeshNode tmNode = new TriangleMeshNode(cube);
 		
 		
 		// Colornode erstellen für farbliche Darstellung
-		ColorNode colorNode = new ColorNode(new Vector3(0, 0.75, 0));
+		ColorNode colorNode = new ColorNode(new Vector3(0, 0, 0));
 		
 		getRoot().addChild(colorNode);
 		colorNode.addChild(tmNode);
